@@ -5,6 +5,7 @@ import './App.css'
 import Header from './components/Header'
 import { Description } from './components/Text'
 import Background from './components/Background'
+import Table from './components/Table'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <Table/>
       </Container>
     </Background>
   )
