@@ -4,12 +4,13 @@ import './App.css'
 import reactLogo from './assets/react.svg'
 import Header from './components/Header'
 import { Description } from './components/Text'
+import Background from './components/Background'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
+    <Background>
       <Header/>
       <div>
         <a href="https://vitejs.dev" target="_blank">
@@ -19,8 +20,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
+      <div>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
@@ -28,10 +28,10 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </Description>
       </div>
-      <p className="read-the-docs">
+      <p>
         Click on the Vite and React logos to learn more
       </p>
-    </div>
+    </Background>
   )
 }
 

@@ -9,6 +9,7 @@ const H1 = styled.h1`
     font-size: ${FONT_SIZE.XXL};
     font-weight: 600;
     ${textTitles}
+    margin: 0px;
 `
 
 const Description = styled.p`
