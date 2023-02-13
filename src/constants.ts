@@ -3,7 +3,7 @@ const FONT_SIZE = {
     XS: '11px',
     S: '13px',
     SM: '14px',
-    M: '15px',
+    M: '18px',
     L: '19px',
     XL: '23px',
     XXL: '45px'
