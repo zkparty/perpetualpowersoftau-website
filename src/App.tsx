@@ -34,9 +34,9 @@ function App() {
 }
 
 const Container = styled.div`
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 1100px;
 `
 
 export default App

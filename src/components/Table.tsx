@@ -1,3 +1,5 @@
+import styled from "styled-components"
+
 const Table = () => {
 
     const data = [
@@ -26,8 +28,8 @@ const Table = () => {
 
 
     return (
-        <table>
-            <thead>
+        <TableComponent>
+            <TableHeader>
                 <tr>
                     <th>Participant ID</th>
                     <th>Identity</th>
@@ -35,7 +37,7 @@ const Table = () => {
                     <th>Attestation</th>
                     <th>IPFS Hash</th>
                 </tr>
-            </thead>
+            </TableHeader>
             <tbody>
                 {data.map((record) => (
                     <tr key={record.participantId}>
@@ -47,8 +49,25 @@ const Table = () => {
                     </tr>
                 ))}
             </tbody>
-        </table>
+        </TableComponent>
     )
 }
+
+const TableComponent = styled.table`
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    border-radius: 5px;
+    padding-block: 20px;
+    padding-inline: 30px;
+    background: #727272ab;
+    border-collapse: collapse;
+`
+
+const TableHeader = styled.thead`
+    height: 40px;
+    font-weight: 700;
+    border-bottom: 2px solid #a4a4a4;
+`
 
 export default Table
