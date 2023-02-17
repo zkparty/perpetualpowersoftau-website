@@ -1,0 +1,27 @@
+<LifecycleConfiguration>
+
+  <Rule>
+    <ID>challenges-standard-to-glacier-deep-archive</ID>
+    <Filter>
+       <Prefix>challenges/</Prefix>
+    </Filter>
+    <Status>Enabled</Status>
+    <Transition>
+      <Days>1</Days>
+      <StorageClass>S3 Glacier Deep Archive</StorageClass>
+    </Transition>
+  </Rule>
+
+  <Rule>
+    <ID>responses-standard-to-glacier-deep-archive</ID>
+    <Filter>
+       <Prefix>responses/</Prefix>
+    </Filter>
+    <Status>Enabled</Status>
+    <Transition>
+      <Days>1</Days>
+      <StorageClass>S3 Glacier Deep Archive</StorageClass>
+    </Transition>
+  </Rule>
+
+</LifecycleConfiguration>
