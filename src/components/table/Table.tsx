@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import DownloadButton from "./DownloadButton"
 
 const Table = () => {
 
@@ -8,21 +9,27 @@ const Table = () => {
             'identity': 'nico.eth',
             'GPGKey': '001',
             'attestation': '0x1234',
-            'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB'
+            'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB',
+            'size': '50',
+            'file': 'current_state_3.txt'
         },
         {
             'participantId': '2',
             'identity': 'serrano.eth',
             'GPGKey': '002',
             'attestation': '0x5678',
-            'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB'
+            'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB',
+            'size': '43',
+            'file': 'current_state_3.txt'
         },
         {
             'participantId': '3',
             'identity': 'enrique.eth',
             'GPGKey': '003',
             'attestation': '0x9012',
-            'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB'
+            'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB',
+            'size': '48',
+            'file': 'current_state_3.txt'
         },
     ]
 
@@ -45,7 +52,8 @@ const Table = () => {
                         <td>{record.identity}</td>
                         <td>{record.GPGKey}</td>
                         <td>{record.attestation}</td>
-                        <td>{record.IPFSHash}</td>
+                        <td>{record.IPFSHash} (size:{record.size} GB)</td>
+                        <td><DownloadButton file={record.file}/></td>
                     </tr>
                 ))}
             </tbody>

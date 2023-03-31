@@ -5,7 +5,7 @@ import './App.css'
 import Header from './components/Header'
 import { Description } from './components/Text'
 import Background from './components/Background'
-import Table from './components/Table'
+import Table from './components/table/Table'
 
 function App() {
   const [count, setCount] = useState(0)

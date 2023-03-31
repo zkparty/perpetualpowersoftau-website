@@ -9,6 +9,10 @@ const FONT_SIZE = {
     XXL: '45px'
   } as const
 
+  const LAMBDA_URL = 'https://vucii4wk16.execute-api.eu-central-1.amazonaws.com/Prod'
+  const PRESIGNED_URL = LAMBDA_URL + '/get-presigned-url?file='
+
   export {
-    FONT_SIZE
+    FONT_SIZE,
+    PRESIGNED_URL
   }

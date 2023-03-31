@@ -6,7 +6,7 @@ type Props = {
     children: React.ReactNode
 }
 
-const Background = ({ children}: Props) => {
+const Background = ({ children }: Props) => {
     return (
         <DivBlack>
             <DivPoints/>

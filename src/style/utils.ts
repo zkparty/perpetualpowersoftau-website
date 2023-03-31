@@ -8,4 +8,6 @@ const textDescriptions = css`
     font-family: 'Syne';
 `
 
-export { textTitles, textDescriptions }
+const mainLightColor = '#f5f5f5'
+
+export { textTitles, textDescriptions, mainLightColor }
