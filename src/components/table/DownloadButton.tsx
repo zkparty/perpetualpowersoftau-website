@@ -16,8 +16,19 @@ const DownloadButton = ({ file }: Props) => {
         setLoading(true)
         setError(false)
         try {
-            const { presignedUrl } = await fetch(PRESIGNED_URL + file).then(res => res.json())
-            window.open(presignedUrl);
+            const result = await fetch(PRESIGNED_URL + file).then(res => res.json())
+            if (!result){
+                throw new Error('Error getting presigned url:', result)
+            }
+            const { StorageClass, url } = result.preSignedUrlObject
+            if (!StorageClass){
+                // the object is in S3 standard storage
+                window.open(url)
+            } else {
+                // the object is in S3 Glacier storage
+                console.log(StorageClass)
+                // TODO: implement a way to call request-retrieval url
+            }
             setLoading(false)
         } catch (error) {
             setError(true)

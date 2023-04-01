@@ -11,7 +11,7 @@ const Table = () => {
             'attestation': '0x1234',
             'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB',
             'size': '50',
-            'file': 'current_state_3.txt'
+            'file': 'current_state.txt'
         },
         {
             'participantId': '2',
@@ -20,7 +20,7 @@ const Table = () => {
             'attestation': '0x5678',
             'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB',
             'size': '43',
-            'file': 'current_state_3.txt'
+            'file': 'current_state_2.txt'
         },
         {
             'participantId': '3',
