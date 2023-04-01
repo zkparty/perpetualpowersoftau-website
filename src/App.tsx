@@ -8,7 +8,6 @@ import Background from './components/Background'
 import Table from './components/table/Table'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <Background>
@@ -24,9 +23,6 @@ function App() {
         <Description>
           To take part, please get in touch with the Ethereum Foundation’s Privacy and Scaling Explorations team via Twitter (@glamperd), Discord or Telegram (@glamperd).
         </Description>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
         <Table/>
       </Container>
     </Background>
