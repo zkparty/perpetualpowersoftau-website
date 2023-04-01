@@ -1,39 +1,9 @@
 import styled from "styled-components"
+import {data} from "../../contributions.json"
 import DownloadButton from "./DownloadButton"
 
+
 const Table = () => {
-
-    const data = [
-        {
-            'participantId': '1',
-            'identity': 'nico.eth',
-            'GPGKey': '001',
-            'attestation': '0x1234',
-            'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB',
-            'size': '50',
-            'file': 'current_state.txt'
-        },
-        {
-            'participantId': '2',
-            'identity': 'serrano.eth',
-            'GPGKey': '002',
-            'attestation': '0x5678',
-            'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB',
-            'size': '43',
-            'file': 'current_state_2.txt'
-        },
-        {
-            'participantId': '3',
-            'identity': 'enrique.eth',
-            'GPGKey': '003',
-            'attestation': '0x9012',
-            'IPFSHash': 'Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB',
-            'size': '48',
-            'file': 'current_state_3.txt'
-        },
-    ]
-
-
     return (
         <TableComponent>
             <TableHeader>
