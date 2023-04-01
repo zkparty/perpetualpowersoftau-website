@@ -47,14 +47,14 @@ const Table = () => {
             </TableHeader>
             <tbody>
                 {data.map((record) => (
-                    <tr key={record.participantId}>
+                    <TableRow key={record.participantId}>
                         <td>{record.participantId}</td>
                         <td>{record.identity}</td>
                         <td>{record.GPGKey}</td>
                         <td>{record.attestation}</td>
                         <td>{record.IPFSHash} (size:{record.size} GB)</td>
                         <td><DownloadButton file={record.file}/></td>
-                    </tr>
+                    </TableRow>
                 ))}
             </tbody>
         </TableComponent>
@@ -76,6 +76,10 @@ const TableHeader = styled.thead`
     height: 40px;
     font-weight: 700;
     border-bottom: 2px solid #a4a4a4;
+`
+
+const TableRow = styled.tr`
+    height: 50px;
 `
 
 export default Table
