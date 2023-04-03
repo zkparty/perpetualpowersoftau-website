@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { PRESIGNED_URL } from "../../constants";
 import ErrorMessage from "../Error";
 import LoadingSpinner from "../LoadingSpinner";
+import RequestModal from "./RequestModal";
 
 type Props = {
     file: string;
@@ -11,6 +12,7 @@ type Props = {
 const DownloadButton = ({ file }: Props) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
     const clickHandler = async () => {
         setLoading(true)
@@ -24,10 +26,10 @@ const DownloadButton = ({ file }: Props) => {
             if (!StorageClass){
                 // the object is in S3 standard storage
                 window.open(url)
+                setOpenModal(false)
             } else {
                 // the object is in S3 Glacier storage
-                console.log(StorageClass)
-                // TODO: implement a way to call request-retrieval url
+                setOpenModal(true)
             }
             setLoading(false)
         } catch (error) {
@@ -35,16 +37,23 @@ const DownloadButton = ({ file }: Props) => {
             console.error(error)
             setTimeout(() => setError(false), 3000)
             setLoading(false)
+            setOpenModal(false)
         }
     }
 
     return (
-        <Button onClick={clickHandler} disabled={loading}>
-            {loading ? <LoadingSpinner/> : 'Download'}
-            {error ? <ErrorMessage>
-                There was an error downloading the file
-            </ErrorMessage> : null}
-        </Button>
+        <>
+            <Button onClick={clickHandler} disabled={loading}>
+                {loading ? <LoadingSpinner/> : 'Download'}
+                {error ? <ErrorMessage>
+                    There was an error downloading the file
+                </ErrorMessage> : null}
+            </Button>
+            <RequestModal
+                open={openModal}
+                toClose={() => setOpenModal(false)}
+            />
+        </>
     )
 };
 
