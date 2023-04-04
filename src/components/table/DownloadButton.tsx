@@ -28,17 +28,16 @@ const DownloadButton = ({ file }: Props) => {
                 window.open(url)
                 setOpenModal(false)
             } else {
-                // the object is in S3 Glacier storage
+                // the object is in S3 glacier storage
                 setOpenModal(true)
             }
-            setLoading(false)
         } catch (error) {
             setError(true)
             console.error(error)
             setTimeout(() => setError(false), 3000)
-            setLoading(false)
             setOpenModal(false)
         }
+        setLoading(false)
     }
 
     return (
@@ -50,6 +49,7 @@ const DownloadButton = ({ file }: Props) => {
                 </ErrorMessage> : null}
             </Button>
             <RequestModal
+                file={file}
                 open={openModal}
                 toClose={() => setOpenModal(false)}
             />
