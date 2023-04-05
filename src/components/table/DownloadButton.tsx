@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { PRESIGNED_URL } from "../../constants";
-import ErrorMessage from "../Error";
+import Message from "../Message";
 import LoadingSpinner from "../LoadingSpinner";
 import RequestModal from "./RequestModal";
 
@@ -10,9 +10,9 @@ type Props = {
 }
 
 const DownloadButton = ({ file }: Props) => {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-    const [openModal, setOpenModal] = useState(false);
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
 
     const clickHandler = async () => {
         setLoading(true)
@@ -44,9 +44,9 @@ const DownloadButton = ({ file }: Props) => {
         <>
             <Button onClick={clickHandler} disabled={loading}>
                 {loading ? <LoadingSpinner/> : 'Download'}
-                {error ? <ErrorMessage>
+                {error ? <Message color={'#ff2828'}>
                     There was an error downloading the file
-                </ErrorMessage> : null}
+                </Message> : null}
             </Button>
             <RequestModal
                 file={file}

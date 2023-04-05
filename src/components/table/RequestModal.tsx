@@ -4,7 +4,8 @@ import Modal from 'react-modal'
 import styled from 'styled-components'
 import { REQUEST_RETRIEVAL_URL } from '../../constants'
 import { textDescriptions } from '../../style/utils'
-import ErrorMessage from '../Error'
+import LoadingSpinner from '../LoadingSpinner'
+import Message from '../Message'
 
 type Props = {
     file: string
@@ -13,7 +14,9 @@ type Props = {
 }
 
 const RequestModal = ({ file, open, toClose }: Props) => {
-    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false)
+    const [success, setSuccess] = useState(false)
+    const [error, setError] = useState(false)
     const [email, setEmail] = useState('')
 
     const onInputHandler = (e: React.FormEvent<HTMLInputElement>) => {
@@ -21,6 +24,8 @@ const RequestModal = ({ file, open, toClose }: Props) => {
     }
 
     const onClickHandler = async () => {
+        setLoading(true)
+        setSuccess(false)
         setError(false)
         try {
             const result = await fetch(REQUEST_RETRIEVAL_URL, {
@@ -32,6 +37,8 @@ const RequestModal = ({ file, open, toClose }: Props) => {
                 })
             }).then(res => res.json())
             console.log(result)
+            setLoading(false)
+            setSuccess(true)
 
         } catch (error) {
             console.log(error)
@@ -81,12 +88,17 @@ const RequestModal = ({ file, open, toClose }: Props) => {
                     <Label htmlFor="email">Email:</Label>
                     <Input type="email" id="email" value={email} onInput={onInputHandler}/>
                 </div>
-                <button onClick={onClickHandler}>Request</button>
+                <button onClick={onClickHandler}>
+                    {loading ? <LoadingSpinner/> : 'Request'}
+                </button>
                 <CloseButton onClick={toClose}>x</CloseButton>
             </Modal>
-            {error ? <ErrorMessage>
+            {error ? <Message color={'#ff2828'}>
                 There was an error requesting the file retrieval. Please try again later.
-            </ErrorMessage> : null}
+            </Message> : null}
+            {success ? <Message color={'#4fd65f'}>
+                Please check your email for further instructions to request retrieval.
+            </Message> : null}
         </>
     )
 }

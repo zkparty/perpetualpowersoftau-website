@@ -5,9 +5,10 @@ import { textDescriptions } from '../style/utils';
 
 type Props = {
     children: React.ReactNode
+    color: string
 }
 
-const ErrorMessage = ({ children }: Props) => {
+const Message = ({ children, color }: Props) => {
     const [show, setShow] = useState(true);
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const ErrorMessage = ({ children }: Props) => {
     return (
         <>
         {show ?
-            <Container>
+            <Container color={color}>
                 {children}
             </Container>
         :
@@ -29,7 +30,7 @@ const ErrorMessage = ({ children }: Props) => {
     )
 }
 
-const Container = styled.div`
+const Container = styled.div<{ color: string }>`
     position: fixed;
     top: 3%;
     right: 3%;
@@ -37,7 +38,7 @@ const Container = styled.div`
     ${textDescriptions}
     padding: 12px;
     border-radius: 5px;
-    background-color: #ff2828;
+    background-color: ${({ color }) => color};
 `
 
-export default ErrorMessage;
+export default Message;
