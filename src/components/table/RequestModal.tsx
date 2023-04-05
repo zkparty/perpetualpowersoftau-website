@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import Modal from 'react-modal'
+import styled from 'styled-components'
 import { REQUEST_RETRIEVAL_URL } from '../../constants'
+import { textDescriptions } from '../../style/utils'
 import ErrorMessage from '../Error'
 
 type Props = {
@@ -51,11 +53,10 @@ const RequestModal = ({ file, open, toClose }: Props) => {
                         backgroundColor: 'rgba(255, 255, 255, 0.1)',
                         backdropFilter: 'blur(6px)',
                         cursor: 'pointer',
-                        overflowY: 'scroll'
                     },
                     content: {
                         border: 'none',
-                        height: '240px',
+                        height: '270px',
                         width: '70%',
                         marginBlock: 'auto',
                         marginInline: 'auto',
@@ -76,12 +77,12 @@ const RequestModal = ({ file, open, toClose }: Props) => {
                     By filling up this form with your email, you will request a file retrieval for this particular contribution.
                     The retrieval process takes 48 hours so you will need to return later on.
                 </p>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" value={email} onInput={onInputHandler}/>
+                <div style={{ marginBlock: '10px' }}>
+                    <Label htmlFor="email">Email:</Label>
+                    <Input type="email" id="email" value={email} onInput={onInputHandler}/>
                 </div>
                 <button onClick={onClickHandler}>Request</button>
-                <button onClick={toClose}>close</button>
+                <CloseButton onClick={toClose}>x</CloseButton>
             </Modal>
             {error ? <ErrorMessage>
                 There was an error requesting the file retrieval. Please try again later.
@@ -89,5 +90,26 @@ const RequestModal = ({ file, open, toClose }: Props) => {
         </>
     )
 }
+
+const Label = styled.label`
+    margin-right: 8px;
+`
+
+const Input = styled.input`
+    border: none;
+    border-radius: 5px;
+    background: #666666;
+    width: 250px;
+    height: 25px;
+    ${textDescriptions}
+`
+
+const CloseButton = styled.button`
+    padding-block: 4px;
+    padding-inline: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+`
 
 export default RequestModal

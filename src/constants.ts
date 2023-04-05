@@ -9,7 +9,7 @@ const FONT_SIZE = {
     XXL: '45px'
   } as const
 
-  const LAMBDA_URL = 'https://vucii4wk16.execute-api.eu-central-1.amazonaws.com/Prod'
+  const LAMBDA_URL = 'https://mg27m8a3vk.execute-api.eu-central-1.amazonaws.com/Prod/'
   const PRESIGNED_URL = LAMBDA_URL + '/get-presigned-url?file='
   const REQUEST_RETRIEVAL_URL = LAMBDA_URL + '/request-retrieval'
 
