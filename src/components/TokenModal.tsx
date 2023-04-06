@@ -65,7 +65,7 @@ const TokenModal = ({ token, toClose }: Props) => {
                 <LoadingSpinner/>
             :
                 <>{error ?
-                    <Description>There was an error confirming your email: {token} </Description>
+                    <Description>There was an error confirming your email: {error} </Description>
                     :
                     <Description>
                         You have successfully confirmed your email. The retrieval request for file has been sent.
