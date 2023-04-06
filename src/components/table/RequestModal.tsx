@@ -37,8 +37,14 @@ const RequestModal = ({ file, open, toClose }: Props) => {
                 })
             }).then(res => res.json())
             console.log(result)
+            if (result.registered) {
+                console.log('Email registered')
+                setSuccess(true)
+            } else {
+                setSuccess(false)
+                setError(true)
+            }
             setLoading(false)
-            setSuccess(true)
 
         } catch (error) {
             console.log(error)
