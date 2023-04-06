@@ -52,7 +52,7 @@ const RequestModal = ({ file, open, toClose }: Props) => {
             <Modal
                 isOpen={open}
                 onRequestClose={toClose}
-                contentLabel="Example Modal"
+                contentLabel="Request Modal"
                 appElement={document.getElementById('root') || undefined}
                 style={{
                     overlay: {

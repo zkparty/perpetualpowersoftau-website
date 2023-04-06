@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import './App.css'
@@ -5,12 +6,23 @@ import Header from './components/Header'
 import { Description } from './components/Text'
 import Background from './components/Background'
 import Table from './components/table/Table'
+import TokenModal from './components/TokenModal'
 
 function App() {
+  const [token, setToken] = useState<string|null>(null)
+  useEffect(() => {
+    const location = window.location
+    const params = new URLSearchParams(location.search)
+    setToken( params.get('token') )
+  }, [])
 
   return (
     <Background>
       <Header/>
+      <TokenModal
+        token={token}
+        toClose={() => setToken(null)}
+      />
       <Container>
         <Description>
         The Privacy & Scaling Explorations team is conducting phase 1 of a multi-party trusted setup ceremony based on the Zcash Powers of Tau ceremony.

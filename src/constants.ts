@@ -12,9 +12,11 @@ const FONT_SIZE = {
   const LAMBDA_URL = 'https://izjgo2zuol.execute-api.eu-central-1.amazonaws.com/Prod/'
   const PRESIGNED_URL = LAMBDA_URL + '/get-presigned-url?file='
   const REQUEST_RETRIEVAL_URL = LAMBDA_URL + '/request-retrieval'
+  const CONFIRM_EMAIL_URL = LAMBDA_URL + '/confirm-email?token='
 
   export {
     FONT_SIZE,
     PRESIGNED_URL,
-    REQUEST_RETRIEVAL_URL
+    REQUEST_RETRIEVAL_URL,
+    CONFIRM_EMAIL_URL,
   }
