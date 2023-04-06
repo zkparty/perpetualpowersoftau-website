@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 import styled from 'styled-components'
 import { REQUEST_RETRIEVAL_URL } from '../../constants'
 import { textDescriptions } from '../../style/utils'
+import { CloseButton, MainButton } from '../Button'
 import LoadingSpinner from '../LoadingSpinner'
 import Message from '../Message'
 
@@ -41,6 +42,7 @@ const RequestModal = ({ file, open, toClose }: Props) => {
                 console.log('Email registered')
                 setSuccess(true)
             } else {
+                // TODO: handle expiration
                 setSuccess(false)
                 setError(true)
             }
@@ -94,9 +96,9 @@ const RequestModal = ({ file, open, toClose }: Props) => {
                     <Label htmlFor="email">Email:</Label>
                     <Input type="email" id="email" value={email} onInput={onInputHandler}/>
                 </div>
-                <button onClick={onClickHandler}>
+                <MainButton onClick={onClickHandler} disabled={loading}>
                     {loading ? <LoadingSpinner/> : 'Request'}
-                </button>
+                </MainButton>
                 <CloseButton onClick={toClose}>x</CloseButton>
             </Modal>
             {error ? <Message color={'#ff2828'}>
@@ -114,20 +116,18 @@ const Label = styled.label`
 `
 
 const Input = styled.input`
-    border: none;
+    border: none !important;
+    border-width: 0px !important;
+
+    :focus {
+        outline:none !important;
+    }
+
     border-radius: 5px;
     background: #666666;
     width: 250px;
     height: 25px;
     ${textDescriptions}
-`
-
-const CloseButton = styled.button`
-    padding-block: 4px;
-    padding-inline: 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
 `
 
 export default RequestModal

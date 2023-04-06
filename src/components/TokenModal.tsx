@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Modal from 'react-modal'
-import styled from 'styled-components'
 import { CONFIRM_EMAIL_URL } from '../constants'
+import { CloseButton } from './Button'
 import LoadingSpinner from './LoadingSpinner'
 import { Description } from './Text'
 
@@ -11,12 +11,12 @@ type Props = {
 }
 
 const TokenModal = ({ token, toClose }: Props) => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string|null>(null)
     useEffect(() => {
         (async () => {
             if (token) {
-                setIsLoading(true)
+                setLoading(true)
                 setError(null)
                 window.history.replaceState(null, '', window.location.pathname)
                 const result = await fetch(CONFIRM_EMAIL_URL + token).then(res => res.json())
@@ -26,7 +26,7 @@ const TokenModal = ({ token, toClose }: Props) => {
                 } else {
                     setError(JSON.stringify(result))
                 }
-                setIsLoading(false)
+                setLoading(false)
             }
         })()
     }, [token])
@@ -61,7 +61,7 @@ const TokenModal = ({ token, toClose }: Props) => {
             }}
         >
             <h2>Email confirmed</h2>
-            {isLoading ?
+            {loading ?
                 <LoadingSpinner/>
             :
                 <>{error ?
@@ -76,13 +76,5 @@ const TokenModal = ({ token, toClose }: Props) => {
         </Modal>
     )
 }
-
-const CloseButton = styled.button`
-    padding-block: 4px;
-    padding-inline: 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-`
 
 export default TokenModal
