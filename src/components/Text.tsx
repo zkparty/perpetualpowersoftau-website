@@ -22,6 +22,8 @@ const H1 = styled.h1`
 
 const Description = styled.p`
     font-size: ${FONT_SIZE.M};
+    overflow-wrap: break-word;
+    width: 100%;
     ${textDescriptions}
 `
 

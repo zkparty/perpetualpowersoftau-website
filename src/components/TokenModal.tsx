@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Modal from 'react-modal'
 import styled from 'styled-components'
 import { CONFIRM_EMAIL_URL } from '../constants'
+import LoadingSpinner from './LoadingSpinner'
+import { Description } from './Text'
 
 type Props = {
     token: string|null
@@ -9,14 +11,22 @@ type Props = {
 }
 
 const TokenModal = ({ token, toClose }: Props) => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState<string|null>(null)
     useEffect(() => {
         (async () => {
             if (token) {
+                setIsLoading(true)
+                setError(null)
+                window.history.replaceState(null, '', window.location.pathname)
                 const result = await fetch(CONFIRM_EMAIL_URL + token).then(res => res.json())
                 console.log(result)
                 if (result.verified){
                     console.log('Email confirmed')
+                } else {
+                    setError(JSON.stringify(result))
                 }
+                setIsLoading(false)
             }
         })()
     }, [token])
@@ -51,9 +61,17 @@ const TokenModal = ({ token, toClose }: Props) => {
             }}
         >
             <h2>Email confirmed</h2>
-            <p>
-                You have successfully confirmed your email. The retrieval request for file has been sent.
-            </p>
+            {isLoading ?
+                <LoadingSpinner/>
+            :
+                <>{error ?
+                    <Description>There was an error confirming your email: {token} </Description>
+                    :
+                    <Description>
+                        You have successfully confirmed your email. The retrieval request for file has been sent.
+                    </Description>
+                }</>
+            }
             <CloseButton onClick={toClose}>x</CloseButton>
         </Modal>
     )
