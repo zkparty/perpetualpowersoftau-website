@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import {data} from "../../contributions.json"
 import DownloadButton from "./DownloadButton"
+import Blockies from 'react-blockies'
 
 
 const Table = () => {
@@ -23,11 +24,11 @@ const Table = () => {
                     <TableRow key={record.participantId}>
                         <td>{record.participantId}</td>
                         <td>{record.identity}</td>
-                        <td>{record.prevChallengeHash.substring(0,6)}</td>
-                        <td>{record.responseHash.substring(0, 6)}</td>
-                        <td>{record.challengeHash.substring(0,6)}</td>
+                        <td>{HashBlockie(record.prevChallengeHash.substring(0,6))}</td>
+                        <td>{HashBlockie(record.responseHash.substring(0, 6))}</td>
+                        <td>{HashBlockie(record.challengeHash.substring(0,6))}</td>
                         <td>{record.GPGKey}</td>
-                        <td>{record.attestation}</td>
+                        <td><a href={record.attestation}>link</a> </td>
                         <td>{record.IPFSHash} (size:{record.size} GB)</td>
                         <td><DownloadButton file={record.responseUrl} name='Response' /></td>
                         <td><DownloadButton file={record.challengeUrl} name='Challenge' /></td>
@@ -58,5 +59,15 @@ const TableHeader = styled.thead`
 const TableRow = styled.tr`
     height: 50px;
 `
+
+const HashBlockie = (hash: string) => {
+    return (
+    <Blockies
+        seed={hash}
+        size={10} 
+        scale={3} 
+        className="identicon" 
+    />)
+}
 
 export default Table

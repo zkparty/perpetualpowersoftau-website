@@ -4,7 +4,7 @@
             "participantId": "1",
             "identity": "weijie",
             "GPGKey": "001",
-            "attestation": "0x1234",
+            "attestation": "https://github.com/privacy-scaling-explorations/perpetualpowersoftau/blob/master/0001_weijie_response/README.md",
             "IPFSHash": "Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB",
             "size": "50",
             "prevChallengeHash": "93da91920d5a54a8a0fde55cd9dc3a10c4f3eef768b62c0948741370864254b4c1920f3f29d4ebc0ef3acecf2e2db63a755713d77e1ed77347a56fbc317c7a93",
