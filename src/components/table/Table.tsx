@@ -10,6 +10,9 @@ const Table = () => {
                 <tr>
                     <th>Participant ID</th>
                     <th>Identity</th>
+                    <th>Previous Challenge Hash</th>
+                    <th>Response Hash</th>
+                    <th>Challenge Hash</th>
                     <th>GPG key</th>
                     <th>Attestation</th>
                     <th>IPFS Hash</th>
@@ -20,10 +23,14 @@ const Table = () => {
                     <TableRow key={record.participantId}>
                         <td>{record.participantId}</td>
                         <td>{record.identity}</td>
+                        <td>{record.prevChallengeHash.substring(0,6)}</td>
+                        <td>{record.responseHash.substring(0, 6)}</td>
+                        <td>{record.challengeHash.substring(0,6)}</td>
                         <td>{record.GPGKey}</td>
                         <td>{record.attestation}</td>
                         <td>{record.IPFSHash} (size:{record.size} GB)</td>
-                        <td><DownloadButton file={record.file}/></td>
+                        <td><DownloadButton file={record.responseUrl} name='Response' /></td>
+                        <td><DownloadButton file={record.challengeUrl} name='Challenge' /></td>
                     </TableRow>
                 ))}
             </tbody>

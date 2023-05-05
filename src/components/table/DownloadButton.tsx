@@ -6,10 +6,11 @@ import LoadingSpinner from "../LoadingSpinner";
 import RequestModal from "./RequestModal";
 
 type Props = {
-    file: string;
+    name: string;
+    file: string | undefined;
 }
 
-const DownloadButton = ({ file }: Props) => {
+const DownloadButton = ({ name, file }: Props) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [openModal, setOpenModal] = useState(false)
@@ -42,14 +43,14 @@ const DownloadButton = ({ file }: Props) => {
 
     return (
         <>
-            <Button onClick={clickHandler} disabled={loading}>
-                {loading ? <LoadingSpinner/> : 'Download'}
+            <Button onClick={clickHandler} disabled={loading || !file}>
+                {loading ? <LoadingSpinner/> : 'Download ' + name}
                 {error ? <Message color={'#ff2828'}>
                     There was an error downloading the file
                 </Message> : null}
             </Button>
             <RequestModal
-                file={file}
+                file={file || ''}
                 open={openModal}
                 toClose={() => setOpenModal(false)}
             />
