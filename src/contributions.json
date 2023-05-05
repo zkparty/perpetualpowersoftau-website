@@ -20,7 +20,7 @@
             "attestation": "0x5678",
             "IPFSHash": "Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB",
             "size": "43",
-            "prevChallengeHash": "93da91920d5a54a8a0fde55cd9dc3a10c4f3eef768b62c0948741370864254b4c1920f3f29d4ebc0ef3acecf2e2db63a755713d77e1ed77347a56fbc317c7a93",
+            "prevChallengeHash": "0x0000",
             "responseHash": "398b99a43f0214e02b7483ea96b8ac0d1e2aa6627b6e9e3b9fe0b0432803be29f014b5678fd83cfa0abee8ca07d7655cb6682b527a7965aa1f99f02a89afb712",
             "challengeHash": "0x00",
             "challengeUrl": "https://ppot.blob.core.windows.net/public/challenge_0001",
@@ -33,9 +33,9 @@
             "attestation": "0x9012",
             "IPFSHash": "Qmb1ejQ2uSXJ5AukYEGdm73Lf8q8vg2As2beC2eYENnDtB",
             "size": "48",
-            "prevChallengeHash": "93da91920d5a54a8a0fde55cd9dc3a10c4f3eef768b62c0948741370864254b4c1920f3f29d4ebc0ef3acecf2e2db63a755713d77e1ed77347a56fbc317c7a93",
+            "prevChallengeHash": "0x00",
             "responseHash": "398b99a43f0214e02b7483ea96b8ac0d1e2aa6627b6e9e3b9fe0b0432803be29f014b5678fd83cfa0abee8ca07d7655cb6682b527a7965aa1f99f02a89afb712",
-            "challengeHash": "0x00",
+            "challengeHash": "0x001",
             "challengeUrl": "https://ppot.blob.core.windows.net/public/challenge_0002",
             "responseUrl": "https://ppot.blob.core.windows.net/public/response_0003_poma"
         }
