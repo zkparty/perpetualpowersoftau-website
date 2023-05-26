@@ -29,7 +29,7 @@ const Table = () => {
                         <td>{HashBlockie(record.challengeHash.substring(0,6))}</td>
                         <td>{record.GPGKey}</td>
                         <td><a href={record.attestation}>link</a> </td>
-                        <td>{record.IPFSHash} (size:{record.size} GB)</td>
+                        <td>{record.IPFSHash.substring(0,3)+'...'+record.IPFSHash.substring(record.IPFSHash.length-3)} (size:{record.size} GB)</td>
                         <td><DownloadButton file={record.responseUrl} name='Response' /></td>
                         <td><DownloadButton file={record.challengeUrl} name='Challenge' /></td>
                     </TableRow>
